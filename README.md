@@ -14,3 +14,8 @@ Leveraging advanced natural language processing algorithms, we built the app to 
 
 # Challenges we ran into
 One of the primary hurdles was fine-tuning the natural language processing algorithms to accurately interpret emotional tone, as language can be highly nuanced and context-dependent. We grappled with creating a user-friendly interface that could provide immediate, actionable feedback without overwhelming the user. We also wanted to integrate either a plugin to use for an existing messaging app or develop our own. We did both but had a difficult time integrating it with the tone analyzer. Despite these challenges, we remained committed to delivering a tool that enhances digital communication.
+
+# Demo
+[https://imgur.com/kMgEkk4]
+<img width="577" alt="Screenshot 2023-09-16 at 11 15 50 PM" src="https://github.com/bellynap/ToneIQ/assets/63522794/6348e520-73db-45c7-8a47-e6a5f103d008">
+
