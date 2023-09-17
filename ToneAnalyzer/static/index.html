@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    <title>ToneIQ</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+
+        /* Add the CSS for the chat interface here */
+        .chat-container {
+            width: 400px;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* New shadow */
+    background-color: #ffffff; /* New background color */
+        }
+        .chat-header {
+            background-color: hsl(295, 51%, 72%);
+            background: linear-gradient(to bottom, #ec9f9f, #fa4f4f); /* New */
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc; /* New border */
+        }
+        .chat-box {
+            height: 300px;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+        .message {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .received {
+            background-color: #f1f1f1;
+            background: linear-gradient(to bottom, #f1f1f1, #f3e4e4); /* New */
+            text-align: left;
+        }
+        .sent {
+            background-color: #6cb5ff;
+            background: linear-gradient(to bottom, #92c1f0, #3785d3); /* New */
+            text-align: right;
+        }
+        .chat-footer {
+            padding: 10px;
+            border-top: 1px solid #ccc; /* New border */
+        }
+        #text-input {
+            width: 100%;
+            padding: 10px;
+            border: none; /* Remove default border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* New shadow */
+        }
+        #result {
+            text-align: right;
+            margin-top: 5px;
+        }
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif; /* New font */
+            background-image: url('static/background.jpeg');  /* New */
+            background-size: cover;  /* New */
+            background-attachment: fixed;  /* New */
+        }
+        header, footer {
+    background-color: #2566b5;
+    color: white;
+    text-align: center;
+    padding: 2em;
+    margin-bottom: 40px; 
+    margin-top: 40px;
+
+        }
+        /* Override the background color for the text box */
+        #text-input {
+            background-color: #fbf4f4;
+        }
+
+        /* Override the background color for the chat container */
+        .chat-container {
+             background-color: #ffffff;
+        } 
+        
+        .input-container {
+    display: flex;
+    align-items: center;
+}
+
+#send-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+
+#send-button:focus {
+    outline: none;
+}
+#logo {
+    width: 300px;
+    height: auto;
+    margin-right: 10px;
+}
+#slogan {
+    font-size: 20px;
+    color: #ffffff;
+    margin-top: 5px;
+}
+    </style>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>ToneIQ</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <img src="static/logo.png" alt="." id="logo">
+        <p id="slogan">Clearer Conversations. Better Connections.</p>
+    </header>
+
+    <div class="chat-container">
+        <div class="chat-header">Chat with Iggy</div>
+        <div class="chat-box">
+
+            <div class="message received">Hey, how are you?</div>
+            <div class="message received">Are we still on for dinner tonight?</div>
+            <div class="message sent">I'm good, thanks for asking!</div>
+            <div class="message sent">Yes, dinner sounds great. 😊</div>
+        </div>
+        <div class="chat-footer">
+            <div class="input-container">
+                <textarea id="text-input" oninput="analyzeTone()"></textarea>
+                <button id="send-button"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function analyzeTone() {
+            const text = document.getElementById('text-input').value;
+            $.ajax({
+                url: '/analyze_tone',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ text: text }),
+                success: function(response) {
+                    document.getElementById('result').innerText = 'Tone: ' + response.tone + ' (Language: ' + response.lang + ')';
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+     <footer>
+        Created by Iggy, Marvyn, Jibin, Chibuikem
+    </footer>
+</body>
+</html>
+
+
